@@ -4,7 +4,7 @@ const USER_IMAGE='https://res.cloudinary.com/dknvsbuyy/image/upload/v1686314044/
 
 function Header() {
   return (
-    <div className='flex justify-between p-5'>
+    <div className='flex justify-between p-3 border-b-[2px] border-[#ff3366]'>
         <img src='./Images/logo.png' width={150}/>
         <div className='flex gap-4'>
             <button className='bg-black p-2 px-3 text-white rounded-full'>CREATE POST</button>
