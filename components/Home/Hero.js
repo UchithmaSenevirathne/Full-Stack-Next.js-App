@@ -3,7 +3,7 @@ import React from "react";
 function Hero() {
   return (
     <div className="text-center">
-      <h1 className="text-[35px] text-center font-extrabold text-black">
+      <h1 className="text-[35px] text-center font-extrabold">
         Find & Discover Players
         <br></br>
         <span className="text-blue-500">Near You</span>
