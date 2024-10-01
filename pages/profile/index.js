@@ -1,6 +1,12 @@
-import React from 'react'
+import { useSession } from 'next-auth/react'
+import React, { useEffect, useState } from 'react'
+import app from '../../shared/FirebaseConfig';
+import { collection, deleteDoc, doc, getDocs, 
+  getFirestore, query, where } from 'firebase/firestore';
+import PostItem from '../../components/Home/PostItem';
+import Toast from '../../components/Toast';
 
-function index() {
+function Profile() {
   return (
     <div className='p-6 mt-8'>
        {showToast ? (
@@ -31,4 +37,4 @@ function index() {
   )
 }
 
-export default index
+export default Profile
