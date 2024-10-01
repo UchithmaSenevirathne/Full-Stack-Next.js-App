@@ -8,6 +8,56 @@ import { getDownloadURL, getStorage,
 import Toast from "../Toast";
 
 function Form() {
+  const [inputs, setInputs] = useState({});
+  const [showToast, setShowToast] = useState(false);
+  const [file, setFile] = useState();
+  const [submit, setSubmit] = useState(false);
+
+  const { data: session } = useSession();
+  const db = getFirestore(app);
+  const storage = getStorage(app);
+
+  useEffect(() => {
+    if (session) {
+      setInputs((values) => ({ ...values, userName: session.user?.name }));
+      setInputs((values) => ({ ...values, userImage: session.user?.image }));
+      setInputs((values) => ({ ...values, email: session.user?.email }));
+    }
+  }, [session]);
+
+  useEffect(()=>{
+    if(submit==true)
+    {
+        savePost();
+    }
+
+  },[submit])
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setShowToast(true);
+    const storageRef = ref(storage, 'ninja-player/'+file?.name);
+    uploadBytes(storageRef, file).then((snapshot) => {
+        console.log('Uploaded a blob or file!');
+      }).then(resp=>{
+        getDownloadURL(storageRef).then(async(url)=>{
+            
+            setInputs((values)=>({...values,
+                image:url}));          
+            setSubmit(true);
+
+        }) 
+      }) ;
+  };
+
+  const savePost=async()=>{
+    await setDoc(doc(db, "posts", Date.now().toString()), inputs);
+  }
+  
   return (
     <div className="mt-4">
       {showToast ? (
