@@ -7,6 +7,30 @@ import PostItem from '../../components/Home/PostItem';
 import Toast from '../../components/Toast';
 
 function Profile() {
+    const {data:session}=useSession();
+  const [userPost,setUserPost]=useState([]);
+  const db = getFirestore(app);
+  const [showToast,setShowToast]=useState(false)
+
+  useEffect(()=>{
+    getUserPost();
+  },[session,showToast]);
+
+  const getUserPost=async()=>{
+    setUserPost([])
+    if(session?.user.email)
+    {
+    const q=query(collection(db,"posts"),
+    where("email","==",session?.user.email));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      let data=doc.data();
+      data.id=doc.id
+      setUserPost(userPost=>[...userPost,data]);
+   
+});
+    }
+  }
   return (
     <div className='p-6 mt-8'>
        {showToast ? (
