@@ -16,12 +16,25 @@ function Header() {
           <span className="hidden sm:block ">CREATE POST</span>
           <HiOutlinePencilSquare className="sm:hidden text-[20px]" />
         </button>
-        <button className="bg-white text-gray-500 p-2 px-3 border-[1px] rounded-full">
-          <span className="hidden sm:block ">SIGN IN</span>
-          <HiArrowLeftOnRectangle className="sm:hidden text-[20px]" />
-        </button>
+        {!session ? (
+          <button
+            className="bg-white text-gray-500 p-2 px-3 border-[1px] rounded-full"
+            onClick={() => signIn()}
+          >
+            <span className="hidden sm:block ">SIGN IN</span>
+            <HiArrowLeftOnRectangle className="sm:hidden text-[20px]" />
+          </button>
+        ) : (
+          <button
+            className="bg-white text-gray-500 p-2 px-3 border-[1px] rounded-full"
+            onClick={() => signOut()}
+          >
+            <span className="hidden sm:block ">SIGN OUT</span>
+            <HiArrowLeftOnRectangle className="sm:hidden text-[20px]" />
+          </button>
+        )}
         <Image
-          src={USER_IMAGE}
+          src={session?session?.user?.image:USER_IMAGE}
           width={45}
           height={40}
           className="rounded-full"
