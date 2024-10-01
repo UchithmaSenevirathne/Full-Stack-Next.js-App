@@ -37,7 +37,7 @@ function Profile() {
     setShowToast(true)
     window.location.reload();
   }
-  
+   
   return (
     <div className='p-6 mt-8'>
        {showToast ? (
