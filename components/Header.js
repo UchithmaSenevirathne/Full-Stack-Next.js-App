@@ -39,7 +39,8 @@ function Header() {
           src={session?session?.user?.image:USER_IMAGE}
           width={45}
           height={40}
-          className="rounded-full"
+          className="rounded-full cursor-pointer"
+          onClick={()=>router.push('/profile')}
         />
       </div>
     </div>
