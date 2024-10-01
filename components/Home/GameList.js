@@ -1,5 +1,5 @@
-import React from 'react'
 import Data from './../../shared/Data'
+import React, { useEffect, useState } from 'react'
 
 function GameList() {
     const [games,setGames]=useState();
