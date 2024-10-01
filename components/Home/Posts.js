@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import PostModal from "./PostModal";
+import PostItem from "./PostItem";
 function Posts({ posts }) {
   const [post, setPost] = useState();
   useEffect(() => {
