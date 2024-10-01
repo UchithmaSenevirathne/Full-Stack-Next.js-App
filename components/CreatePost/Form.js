@@ -5,7 +5,7 @@ import app from "./../../shared/FirebaseConfig";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { getDownloadURL, getStorage, 
     ref, uploadBytes } from "firebase/storage";
-import Toast from "../Toast";
+// import Toast from "../Toast";
 
 function Form() {
   const [inputs, setInputs] = useState({});
@@ -57,7 +57,7 @@ function Form() {
   const savePost=async()=>{
     await setDoc(doc(db, "posts", Date.now().toString()), inputs);
   }
-  
+
   return (
     <div className="mt-4">
       {showToast ? (
