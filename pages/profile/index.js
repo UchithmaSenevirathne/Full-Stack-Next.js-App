@@ -31,6 +31,13 @@ function Profile() {
 });
     }
   }
+
+  const onDeletePost=async(id)=>{
+    await deleteDoc(doc(db, "posts", id));
+    setShowToast(true)
+    window.location.reload();
+  }
+  
   return (
     <div className='p-6 mt-8'>
        {showToast ? (
