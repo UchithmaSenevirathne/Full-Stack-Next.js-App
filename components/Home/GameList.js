@@ -2,6 +2,10 @@ import React from 'react'
 import Data from './../../shared/Data'
 
 function GameList() {
+    const [games,setGames]=useState();
+    useEffect(()=>{
+       setGames(Data.GameList) 
+    },[])
   return (
     <div className='grid grid-cols-3 sm:grid-cols-4
     md:grid-cols-5 lg:grid-cols-7 mt-4'>
