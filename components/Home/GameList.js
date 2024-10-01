@@ -1,7 +1,6 @@
-import Data from './../../shared/Data'
 import React, { useEffect, useState } from 'react'
-
-function GameList() {
+import Data from './../../shared/Data'
+function GameList({onGamePress}) {
     const [games,setGames]=useState();
     useEffect(()=>{
        setGames(Data.GameList) 
