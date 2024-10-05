@@ -44,13 +44,11 @@ export default function Home() {
   }
   
   return (
-    <div className='flex flex-col items-center 
-    justify-center mt-9'>
+    <div className='flex flex-col items-center justify-center mt-9'>
       <div className='w-[70%] md:w-[50%] lg:w-[55%]'>
       <Hero/>
         <Search/>
-        <GameList onGamePress={onGamePress}/>
-      
+        <GameList/>
       </div>
       {posts? <Posts posts={posts}/>:null}
        
